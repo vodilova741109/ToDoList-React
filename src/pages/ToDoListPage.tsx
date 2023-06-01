@@ -1,16 +1,17 @@
-import { Header } from "../components/Header/Header"
 import { Form } from "../components/Form/Form"
 import { ToDoList } from "../components/ToDoList/ToDoList"
 import { ToDo } from "../models/todo-item"
 import { useState } from "react"
 
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ToDoListPage = () => {
     const [todos, setTodos] = useState<ToDo[]>([ ])
 
     const createNewToDo = (text: string) => {
+        const notify = () => toast("Сoздано")
+        notify() 
         const newTodo: ToDo = {
             id: todos.length,
             text: text,
@@ -18,7 +19,9 @@ export const ToDoListPage = () => {
         }
         setTodos([...todos, newTodo])
     }
-    const updateToDo = (todoItem: ToDo) => {      
+    const updateToDo = (todoItem: ToDo) => {   
+        const notify = () => toast("Изменено")
+        notify()   
         const newTodos = todos.map((todo) => {
             if (todo.id === todoItem.id) {
                 todo.isDone = !todo.isDone
@@ -28,17 +31,18 @@ export const ToDoListPage = () => {
         setTodos(newTodos)
 
     }
-    const deleteToDo = (todoItem: ToDo) => {    
+    
+    const deleteToDo = (todoItem: ToDo) => {  
+        const notify = () => toast("Удалено")
+        notify()
         const newTodos = todos.filter((todo) => todo.id !== todoItem.id)
         setTodos(newTodos)
-
     }
-   
     return (
-        <>  
-            <Header />
+        <>           
             <Form createNewToDo={createNewToDo} />          
-            <ToDoList todos={todos} updateToDo={updateToDo} deleteToDo={deleteToDo} />
+            <ToDoList todos={todos} updateToDo={updateToDo} deleteToDo={deleteToDo}/>
+            <ToastContainer />  
             
         </>
     )
