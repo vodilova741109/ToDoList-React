@@ -1,20 +1,23 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { ComponentProps } from "../models/component-props"
+
 import { ToDo } from "../models/todo-item"
 import { useEffect, useState } from "react"
-export const ItemDescription = ({ todos }: ComponentProps) => {
+import { useSelector } from "react-redux"
+import { RootState } from "../store"
+export const ViewListItem = () => {
+    const todoList = useSelector((state: RootState) => state.todoList.todos)
     const { id } = useParams()
     const navigate = useNavigate()
     const [todo, setTodo] = useState<ToDo>()
 
     useEffect(() => {
-        const searchTodo = todos.find((todo) => todo.id === Number(id))
+        const searchTodo = todoList.find((todo) => todo.id === Number(id))
         if (searchTodo) {
             setTodo(searchTodo)
         } else {
             navigate('/404')
         }
-    },[todos, id, navigate])
+    },[todoList, id, navigate])
 
     return (
         <div className="container">

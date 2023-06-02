@@ -5,6 +5,7 @@ import classes from './Listeitem.module.scss'
 export const Listeitem = ({ todo }: { todo: ToDo }) => {
     return (
         <Link className={`${classes.link} ${todo.isDone ? classes.done : classes.notDone}`}
+            rel="noreferrer"
             to={`/list/${todo.id}`}
         >{todo.text}</Link>
 

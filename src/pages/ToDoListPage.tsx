@@ -1,47 +1,30 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Form } from "../components/Form/Form"
 import { ToDoList } from "../components/ToDoList/ToDoList"
 import { ToDo } from "../models/todo-item"
-import { useState } from "react"
-
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { RootState } from "../store";
+import  { deleteAction, updateAction } from "../feature/todolist";
+import { createAction } from "../feature/todolist";
 
 export const ToDoListPage = () => {
-    const [todos, setTodos] = useState<ToDo[]>([ ])
-
+    const todoList = useSelector((state: RootState) => state.todoList.todos)
+    const dispatch = useDispatch()
+    
     const createNewToDo = (text: string) => {
-        const notify = () => toast("Сoздано")
-        notify() 
-        const newTodo: ToDo = {
-            id: todos.length,
-            text: text,
-            isDone: false
-        }
-        setTodos([...todos, newTodo])
+      dispatch(createAction(text))
     }
     const updateToDo = (todoItem: ToDo) => {   
-        const notify = () => toast("Изменено")
-        notify()   
-        const newTodos = todos.map((todo) => {
-            if (todo.id === todoItem.id) {
-                todo.isDone = !todo.isDone
-            }
-            return todo
-        })
-        setTodos(newTodos)
-
-    }
-    
+        dispatch(updateAction(todoItem))
+    }    
     const deleteToDo = (todoItem: ToDo) => {  
-        const notify = () => toast("Удалено")
-        notify()
-        const newTodos = todos.filter((todo) => todo.id !== todoItem.id)
-        setTodos(newTodos)
+        dispatch(deleteAction(todoItem))       
     }
     return (
         <>           
             <Form createNewToDo={createNewToDo} />          
-            <ToDoList todos={todos} updateToDo={updateToDo} deleteToDo={deleteToDo}/>
+            <ToDoList todos={todoList} updateToDo={updateToDo} deleteToDo={deleteToDo}/>
             <ToastContainer />  
             
         </>
