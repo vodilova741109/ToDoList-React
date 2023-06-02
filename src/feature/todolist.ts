@@ -46,8 +46,7 @@ export const todoSlice = createSlice({
     
     },
     submitAction: (state, action: PayloadAction<string>) => {      
-     
-      const newTodo: ToDo = {
+          const newTodo: ToDo = {
           id: state.todos.length,
           text: action.payload,
           isDone: false
