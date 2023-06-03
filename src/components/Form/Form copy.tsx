@@ -1,10 +1,11 @@
 
 
 import { useDispatch, useSelector } from 'react-redux'
-import classes from './Form.module.scss'
 import { RootState } from '../../store'
 import { createAction } from '../../feature/todolist'
 import { setText } from '../../feature/formtext'
+import { FormBlock, FormButton, FormInput, FormLabel, FormWrapper } from './Form.styled'
+import plusIcon from '../../assets/images/plus.png'
 
 export const Form = (props: { createNewToDo: Function }) => {
     const todoForm = useSelector((state: RootState) => state.formText.text)
@@ -15,17 +16,16 @@ export const Form = (props: { createNewToDo: Function }) => {
     }
 
     return (
-        <div className={classes.wrapper}>
-            <form action="#" onSubmit={formSubmit}>
-                <label>
-                    <input
-                        className={classes.input}
+        <FormWrapper>
+            <FormBlock action="#" onSubmit={formSubmit}>
+                <FormLabel>
+                    <FormInput                     
                         value={todoForm}
                         type="text"
                         onChange={(e) => dispatch(createAction(e.target.value))} />
-                    <button className={classes.button}></button>
-                </label>
-            </form>
-        </div>
+                    <FormButton icon={plusIcon} />
+                </FormLabel>
+            </FormBlock>
+        </FormWrapper>
     )
 }
