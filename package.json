@@ -2,7 +2,7 @@
   "name": "tdo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/vodilova741109/ToDoList-React",
+  "homepage": "https://vodilova741109.github.io/ToDoList-React/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
@@ -34,7 +34,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
