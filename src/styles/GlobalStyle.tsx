@@ -8,7 +8,8 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     }
 
     body {
-        background-color: ${(props) => props.theme.colors.backgroundSecondary};
+        transition: background-color .2s;
+        background-color: ${({theme}) => theme.colors.backgroundSecondary};
         padding: 50px 0 0 0;
         font-family: 'Roboto', sans-serif;
         font-size: 16px;

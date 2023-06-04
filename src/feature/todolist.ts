@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { ToDo } from '../models/todo-item'
 import { toast } from 'react-toastify'
+import {v4 as uuid} from 'uuid'
 
 export interface TodoState {
   todos: ToDo[]
@@ -19,7 +20,7 @@ export const todoSlice = createSlice({
         const notify = () => toast("Сoздано")
         notify() 
         const newTodo: ToDo = {
-            id: state.todos.length,
+            id: uuid(),
             text: action.payload,
             isDone: false
         }
@@ -47,7 +48,7 @@ export const todoSlice = createSlice({
     },
     submitAction: (state, action: PayloadAction<string>) => {      
           const newTodo: ToDo = {
-          id: state.todos.length,
+          id: uuid(),
           text: action.payload,
           isDone: false
       }
@@ -56,8 +57,6 @@ export const todoSlice = createSlice({
   },
   },
 })
-
-
 
 
 export const { createAction, updateAction, deleteAction} = todoSlice.actions

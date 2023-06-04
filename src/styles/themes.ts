@@ -1,4 +1,4 @@
-import { Theme } from "../models/themes"
+import { Theme, Themes } from "../models/themes"
 
 
 const light: Theme ={
@@ -9,10 +9,10 @@ const light: Theme ={
     }
 }
 const dark: Theme ={
-    name: 'light',
+    name: 'dark',
     colors: {
-        backgroundPrimary: 'black',
+        backgroundPrimary: '#000000b0;',
         backgroundSecondary: 'gray'
     }
 }
-export const themes = {light, dark}
+export const themes: Themes = {light, dark}

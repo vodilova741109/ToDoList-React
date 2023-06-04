@@ -19,6 +19,7 @@ export const HeaderContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 `
 export const Headerlink = styled.a`
@@ -32,4 +33,22 @@ export const Headeractive  = styled.a`
 {
     color: #ffffff33;
 }
+`
+export const WrapperButton = styled.div `
+{
+    position: absolute;
+    right: 0;
+    top: 10%;
+    transform: translate(-10%);    
+}
+
+`
+export const ButtonTheme = styled.button `
+    padding: 10px;
+    background-color: #81abcd;
+    border: #81abcd;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+
 `
