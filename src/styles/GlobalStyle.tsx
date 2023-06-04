@@ -1,13 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "styled-normalize";
-export const GlobalStyle = createGlobalStyle`
+import { Theme } from "../models/themes";
+export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     ${normalize}
     * {
         box-sizing: border-box;
     }
 
     body {
-        background-color: #edf0f1;
+        background-color: ${(props) => props.theme.colors.backgroundSecondary};
         padding: 50px 0 0 0;
         font-family: 'Roboto', sans-serif;
         font-size: 16px;
