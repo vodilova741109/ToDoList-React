@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom"
 
+import { LinkButton, NotFoundBlock, Title } from "./404.styled"
+import notFound  from '../assets/images/notFound.jpg'
+
 export const NotFound = ()=>{
     return (
-        <div className="container">
-              <h1>Not Faund</h1>
-              <Link to="/">To Home</Link>
-        </div>
+        <>
+            <NotFoundBlock img={ notFound}  >
+                <Title>Not Faund</Title>              
+                <LinkButton to="/">To Home</LinkButton>
+            </NotFoundBlock>       
+        </>
       
     )
 }

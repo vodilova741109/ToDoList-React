@@ -21,5 +21,6 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
         flex-direction: column;
         align-items: center;
         padding: 20px;
-    }
+    } 
+    
 `

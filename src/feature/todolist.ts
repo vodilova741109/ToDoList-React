@@ -46,15 +46,7 @@ export const todoSlice = createSlice({
         state.todos = newTodos
     
     },
-    submitAction: (state, action: PayloadAction<string>) => {      
-          const newTodo: ToDo = {
-          id: uuid(),
-          text: action.payload,
-          isDone: false
-      }
-      state.todos =[...state.todos, newTodo]
 
-  },
   },
 })
 
