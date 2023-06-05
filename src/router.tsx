@@ -9,7 +9,7 @@ export const router = createBrowserRouter([
     {
       path: '/',
       element: <Layouts />,
-      errorElement: < NotFound/>,
+      errorElement: <NotFound/>,
       children: [
         { path: '/', element: <ToDoListPage/> },   
         { path: '/list', element: <ViewList />},
@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
     },  
     {
       path: '/',
-      element: < NotFound/>
+      element: <NotFound/>
     }
     
   ], {basename: '/ToDoList-React'})
